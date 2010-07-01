@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+		<Button android:id="@+id/start" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Start"></Button>
+		<Button android:id="@+id/stop" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Stop"></Button>
+	</LinearLayout>
+	<RadioGroup android:id="@+id/RadioGroup01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioGroup>
+	
+
+</LinearLayout>

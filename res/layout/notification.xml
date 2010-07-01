@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:padding="3dp" android:orientation="vertical">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_height="wrap_content" android:layout_width="fill_parent">
+		<ImageView android:id="@+id/icon" android:src="@drawable/icon"
+			android:minWidth="25dp" android:minHeight="25dp" android:maxWidth="25dp"
+			android:maxHeight="25dp" android:layout_marginRight="10dp"
+			android:layout_width="wrap_content" android:layout_height="fill_parent"></ImageView>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<TextView android:text="xxx" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/title"
+				android:textStyle="bold" android:textColor="#000000" android:textSize="14sp" ></TextView>
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_height="wrap_content" android:gravity="center_vertical"
+				android:layout_width="fill_parent">
+				<TextView android:text="yyy" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/body"
+					android:maxLines="3" android:textSize="10sp" android:textColor="#000000"></TextView>
+				<TextView android:text="zzz" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:id="@+id/when"
+					android:textSize="12sp" android:gravity="right" android:textColor="#333333"></TextView>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>

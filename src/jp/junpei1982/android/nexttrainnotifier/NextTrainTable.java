@@ -82,7 +82,7 @@ public class NextTrainTable {
 		StringBuilder result = new StringBuilder();
 		result.append("[" + title + "]\n");
 		for (int i = 0; i < records.length; i++) {
-			if (records[i] != null) { // FIXME 電車が来ない時間の考慮
+			if (records[i] != null) { // 電車が来ない時間の考慮
 				for (int j = 0; j < records[i].length; j++) {
 					result.append(records[i][j].toString());
 				}

@@ -22,7 +22,7 @@ public class NextTrainReader {
 				if (line.length() == 0 || line.startsWith(";")) {
 					// 空行 or ';' で始まる行はコメントなので何もしない
 				} else if (line.startsWith("[")) {
-					// TODO 曜日情報の読み込みはしない。平日ダイヤと休日ダイヤとして扱う
+					// 曜日情報の読み込みはしない。平日ダイヤと休日ダイヤとして扱う
 					if (flag) {
 						result.add(new NextTrainTable(title, records));
 						// 作業用領域をクリア

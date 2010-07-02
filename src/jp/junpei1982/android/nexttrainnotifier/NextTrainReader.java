@@ -1,6 +1,7 @@
 package jp.junpei1982.android.nexttrainnotifier;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ public class NextTrainReader {
 		Map<Character, String> notesTable = new HashMap<Character, String>();
 
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(fileName));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "SJIS"));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				if (line.length() == 0 || line.startsWith(";")) {

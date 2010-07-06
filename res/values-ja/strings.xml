@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Next Train Notifier</string>
+	<string name="start_button">通知開始</string>
+	<string name="stop_button">通知停止</string>
+	<string name="reload_button">時刻表データ再読込</string>
+</resources>

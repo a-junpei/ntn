@@ -1,16 +1,64 @@
 package jp.junpei1982.android.nexttrainnotifier;
 import java.util.Calendar;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
 
 
-public class NextTrainTable {
+
+public class NextTrainTable implements Parcelable {
 	private String title;
 	private NextTrainRecord[][] records;
+
+	public static final Parcelable.Creator<NextTrainTable> CREATOR = new Parcelable.Creator<NextTrainTable>() {
+		public NextTrainTable createFromParcel(Parcel in) {
+			return new NextTrainTable(in);
+		}
+
+		public NextTrainTable[] newArray(int size) {
+			return new NextTrainTable[size];
+		}
+	};
+
+	NextTrainTable(Parcel in) {
+		this.title = in.readString();
+		this.records = new NextTrainRecord[24][];
+		for (int i = 0; i < 24; i++) {
+			int len = in.readInt();
+			if (len != 0) {
+				this.records[i] = new NextTrainRecord[len];
+				for (int j = 0; j < len; j++) {
+					this.records[i][j] = in.readParcelable(NextTrainRecord.class.getClassLoader());
+				}
+			}
+		}
+	} 
 
 	NextTrainTable(String title, NextTrainRecord[][] records) {
 		this.title = title;
 		this.records = records;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeString(this.title);
+		for (int i = 0; i < 24; i++) {
+			if (this.records[i] != null) {
+				int len = this.records[i].length;
+				out.writeInt(len);
+				for (int j = 0; j < len; j++) {
+					out.writeParcelable(this.records[i][j], 0);
+				}
+			} else {
+				out.writeInt(0);
+			}
+		}
 	}
 
 	public String getTitle() {
@@ -63,6 +111,7 @@ public class NextTrainTable {
 		return getNextHourRecord(h);
 	}
 	
+	// FIXME 空データの場合など、丸一日さがしてもない場合を考慮する
 	private NextTrainRecord getNextHourRecord(int h) {
 		if (h == 23) { // 23時の次は0時
 			h = 0;

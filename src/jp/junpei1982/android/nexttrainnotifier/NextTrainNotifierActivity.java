@@ -12,16 +12,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ToggleButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class NextTrainNotifierActivity extends Activity {
 
@@ -67,7 +63,7 @@ public class NextTrainNotifierActivity extends Activity {
 		reloadButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				loadTBLListFromSD(); // 強制的にファイルから読み込み
+				loadTBLListFromSD();
 			}
 		});
 	}
@@ -114,8 +110,8 @@ public class NextTrainNotifierActivity extends Activity {
 			
 			@Override
 			protected void onPostExecute(Void result) {
-				reflectRadioButton(NextTrainNotifierActivity.this);
 				this.dialog.dismiss();
+				reflectRadioButton(NextTrainNotifierActivity.this);
 			}
 		}.execute();
 	}
@@ -126,7 +122,9 @@ public class NextTrainNotifierActivity extends Activity {
 	 * @param context
 	 */
 	private void reflectRadioButton(Context context) {
+		radioGroup.clearCheck();
 		radioGroup.removeAllViews();
+
 		for (int i = 0; i < nextTrainTableList.size(); i++) {
 			RadioButton radioButton = new RadioButton(this);
 			radioButton.setId(i);

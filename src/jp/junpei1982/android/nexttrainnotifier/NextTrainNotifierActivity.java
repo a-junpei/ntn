@@ -12,7 +12,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,10 +21,11 @@ import android.widget.RadioGroup;
 
 public class NextTrainNotifierActivity extends Activity {
 
-	private static final String TBL_LIST_PATH = "/sdcard/NextTrainNotifier";
+	private static final String TBL_LIST_PATH = Environment.getExternalStorageDirectory() + "/NextTrainNotifier";
 	
 	private List<NextTrainTable> nextTrainTableList;
 	private RadioGroup radioGroup;
+	private Button startButton;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -36,7 +37,7 @@ public class NextTrainNotifierActivity extends Activity {
 		radioGroup = (RadioGroup) findViewById(R.id.RadioGroup01);
 		loadTBLListFromSD();
 
-		Button startButton = (Button) findViewById(R.id.StartButton);
+		startButton = (Button) findViewById(R.id.StartButton);
 		startButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -111,30 +112,33 @@ public class NextTrainNotifierActivity extends Activity {
 			@Override
 			protected void onPostExecute(Void result) {
 				this.dialog.dismiss();
-				reflectRadioButton(NextTrainNotifierActivity.this);
+				reflectView(NextTrainNotifierActivity.this);
 			}
 		}.execute();
 	}
 
 	/**
-	 * ラジオボタンに反映(idは0オリジン)
+	 * 読み込んだ結果を画面に反映
 	 * 
 	 * @param context
 	 */
-	private void reflectRadioButton(Context context) {
+	private void reflectView(Context context) {
 		radioGroup.clearCheck();
 		radioGroup.removeAllViews();
 
-		for (int i = 0; i < nextTrainTableList.size(); i++) {
-			RadioButton radioButton = new RadioButton(this);
-			radioButton.setId(i);
-			radioButton.setText(nextTrainTableList.get(i).getTitle());
-			radioButton.setTextColor(Color.WHITE);
-			radioGroup.addView(radioButton);
-		}
-		
-		if (radioGroup.getChildCount() > 0) { // 1つ以上あれば一番上をチェック
-			radioGroup.check(0);
+		if (nextTrainTableList.size() == 0) {
+			startButton.setEnabled(false); // データなし時は通知開始ボタンは無効
+		} else {
+			for (int i = 0; i < nextTrainTableList.size(); i++) {
+				RadioButton radioButton = new RadioButton(this);
+				radioButton.setId(i); // idはindex値をそのまま使う
+				radioButton.setText(nextTrainTableList.get(i).getTitle());
+				radioButton.setTextColor(Color.WHITE);
+				radioGroup.addView(radioButton);
+			}
+			
+			startButton.setEnabled(true);
+			radioGroup.check(0);// 1つ以上あれば一番上をチェック
 		}
 	}
 }

@@ -2,12 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	
-	<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content">
-	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/StartButton" android:text="@string/start_button"></Button>
-	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/StopButton" android:text="@string/stop_button"></Button>
-	<Button android:layout_height="wrap_content" android:text="@string/reload_button" android:layout_width="wrap_content" android:id="@+id/ReloadButton"></Button>
-</LinearLayout><RadioGroup android:id="@+id/RadioGroup01"
+
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/StartButton"
+			android:text="@string/start_button" android:enabled="false"></Button>
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/StopButton"
+			android:text="@string/stop_button"></Button>
+		<Button android:layout_height="wrap_content" android:text="@string/reload_button"
+			android:layout_width="wrap_content" android:id="@+id/ReloadButton"></Button>
+	</LinearLayout>
+	<RadioGroup android:id="@+id/RadioGroup01"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioGroup>
 
 </LinearLayout>

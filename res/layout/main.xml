@@ -14,7 +14,9 @@
 		<Button android:layout_height="wrap_content" android:text="@string/reload_button"
 			android:layout_width="wrap_content" android:id="@+id/ReloadButton"></Button>
 	</LinearLayout>
-	<RadioGroup android:id="@+id/RadioGroup01"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioGroup>
+	
 
+
+	<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="wrap_content"><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content"><RadioGroup android:id="@+id/RadioGroup01" android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioGroup>
+</LinearLayout></ScrollView>
 </LinearLayout>

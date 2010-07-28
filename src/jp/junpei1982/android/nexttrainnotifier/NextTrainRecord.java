@@ -26,7 +26,21 @@ public class NextTrainRecord implements Parcelable{
 	NextTrainRecord(int hour, int min, String[] notes) {
 		this.hour = hour;
 		this.min = min;
-		formatttedStr = String.format("%02d:%02d", hour, min);
+		
+		buildFormatttedStr(hour, min, notes);
+	}
+
+	/**
+	 * 次の形式の文字列をつくる
+	 * hh:mm [半角スペース区切りの備考]
+	 * 
+	 * @param hour
+	 * @param min
+	 * @param notes
+	 */
+	private void buildFormatttedStr(int hour, int min, String[] notes) {
+		//String.format()は重いので手動で0パディング
+		formatttedStr = Utils.padding(String.valueOf(hour), 2, '0') + ":" + Utils.padding(String.valueOf(min), 2, '0');
 		for (String note : notes) {
 			formatttedStr += " " + note;
 		}

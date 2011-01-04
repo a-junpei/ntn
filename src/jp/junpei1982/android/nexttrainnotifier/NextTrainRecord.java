@@ -44,6 +44,7 @@ public class NextTrainRecord implements Parcelable{
 		for (String note : notes) {
 			formatttedStr += " " + note;
 		}
+		formatttedStr = Utils.truncate(formatttedStr, 25);
 	}
 
 	NextTrainRecord(Parcel in) {

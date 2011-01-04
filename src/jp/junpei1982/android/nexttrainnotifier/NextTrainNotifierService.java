@@ -51,7 +51,7 @@ public class NextTrainNotifierService extends Service {
 				NextTrainNotifierReceiver.class);
 		intent.setAction(NextTrainNotifierReceiver.ACTION_UPDATE);
 		intent.putExtra("table", table);
-		PendingIntent sender = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+		PendingIntent sender = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		
 		// 次の1分の00秒にセット
 		Calendar cal = Calendar.getInstance();

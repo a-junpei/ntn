@@ -23,4 +23,23 @@ public class Utils {
 		
 		return result.toString();
 	}
+
+	/**
+	 * 文字列strの長さがlenより大きい時、lenまでの長さで切り捨てる。末尾３文字は...に置き換え
+	 * 
+	 * @param str
+	 * @param len
+	 * @return
+	 */
+	public static String truncate(String str, int len) {
+		if (len <= 3) { // ...を付加するので、3文字以下には切り捨て不可
+			throw new IllegalArgumentException();
+		}
+		
+		if (str.length() > len) {
+			return str.substring(0, (len - 3)) + "...";
+		} else {
+			return str;
+		}
+	}
 }

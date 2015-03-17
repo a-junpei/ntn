@@ -1,0 +1,1 @@
+NextTrainNotifier is NextTrain client for Android
